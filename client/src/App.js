@@ -1,15 +1,19 @@
+import { useState } from 'react';
+
+import Footer from './components/Footer';
 import Navbar from './components/Navbar';
+
 
 function App() {
 
-  let data;
+  const [home, sethome] = useState("all tournaments");
+
   async function task() {
-    let url = 'http://localhost:9000/testAPI';
+    let url = 'http://localhost:9000/home';
     try {
       let res = await fetch(url);
-      data = await res.json();
-      console.log(data);
-      return data;
+      let data = await res.json();
+      sethome(JSON.stringify(data));
     } catch (error) {
       console.log(error);
     }
@@ -18,11 +22,16 @@ function App() {
   task();
 
   return (
-    <>
+    <div style={{ "minHeight": "100vh" }}>
 
       <Navbar title="Home" />
-    
-    </>
+      <main>
+        {home}
+      </main>
+      <Footer />
+
+    </div>
+
   );
 }
 
