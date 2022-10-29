@@ -1,3 +1,4 @@
+import React from 'react'
 import logo from './logo-criclive.png'
 
 export default function Navbar(props) {

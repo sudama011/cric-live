@@ -1,37 +1,32 @@
-import { useState } from 'react';
-
+import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
+import NoPage from "./pages/NoPage";
+import Home from './components/Home';
+
 
 
 function App() {
 
-  const [home, sethome] = useState("all tournaments");
-
-  async function task() {
-    let url = 'http://localhost:9000/home';
-    try {
-      let res = await fetch(url);
-      let data = await res.json();
-      sethome(JSON.stringify(data));
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  task();
-
+  
   return (
     <div style={{ "minHeight": "100vh" }}>
+      <Navbar />
 
-      <Navbar title="Home" />
-      <main>
-        {home}
-      </main>
+      <BrowserRouter>
+        
+        <Routes>
+          <Route path="/" element={<Home />}>
+
+            <Route path="*" element={<NoPage />} />
+          </Route>
+        </Routes>
+
+      </BrowserRouter>
+
       <Footer />
-
     </div>
-
   );
 }
 
