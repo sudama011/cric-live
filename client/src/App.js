@@ -9,24 +9,22 @@ import Home from './components/Home';
 
 function App() {
 
-  
+
   return (
-    <div style={{ "minHeight": "100vh" }}>
-      <Navbar />
+    <>
 
       <BrowserRouter>
-        
-        <Routes>
-          <Route path="/" element={<Home />}>
+        <Navbar />
 
-            <Route path="*" element={<NoPage />} />
-          </Route>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NoPage />} />
         </Routes>
 
+        <Footer />
       </BrowserRouter>
 
-      <Footer />
-    </div>
+    </>
   );
 }
 

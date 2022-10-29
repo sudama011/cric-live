@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+// import style from '../App.css';
+
 
 export default function home() {
     const [presentTournament, setPresentTournament] = useState(
